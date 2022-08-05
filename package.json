@@ -1,0 +1,32 @@
+{
+  "name": "uh-ejercicionode",
+  "version": "1.0.0",
+  "description": "",
+  "main": "blank.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "seedMovies": "node ./src/utils/seeds/movie.seed.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Patch-o/uh-ejercicioNODE.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Patch-o/uh-ejercicioNODE/issues"
+  },
+  "homepage": "https://github.com/Patch-o/uh-ejercicioNODE#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "mongoose": "^6.5.1"
+  },
+  "devDependencies": {
+    "dotenv": "^16.0.1",
+    "nodemon": "^2.0.19"
+  }
+}
