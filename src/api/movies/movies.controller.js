@@ -1,3 +1,4 @@
+const { deleteFile } = require('../../utils/middlewares/deleteFile.middleware');
 const Movie = require('./movies.model');
 
 const getAllMovies = async (req, res, next) => {
@@ -80,7 +81,13 @@ const putMovie = async (req, res, next) => {
         const { id } = req.params;
         const movie = new Movie(req.body);
         movie._id = id; // cambiamos el id al nuevo objeto para actualizar el que genera por el suyo
+        if(req.file) {
+            movie.photo = req.file.path;
+        }
         const updatedMovie = await Movie.findByIdAndUpdate(id, movie);
+        if(updatedMovie.photo) {
+            deleteFile(updatedMovie.photo)
+        }
         return res.status(200).json(updatedMovie);
     } catch (error) {
        return next(error);

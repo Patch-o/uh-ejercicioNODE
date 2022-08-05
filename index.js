@@ -4,9 +4,17 @@ const cors = require('cors');
 const db = require('./src/utils/database/database');
 const moviesRoutes = require('./src/api/movies/movies.routes');
 const cinemasRoutes = require('./src/api/cinemas/cinemas.routes');
+const cloudinary = require("cloudinary").v2;
 
 dotenv.config();
 db.connectDb();
+
+cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET,
+});
+  
 
 const app = express();
 const PORT = process.env.PORT || 8000;
