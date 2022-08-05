@@ -69,6 +69,9 @@ const getMoviesByYear = async (req, res, next) => {
 const postMovie = async (req, res, next) => {
     try {
         const newMovie = new Movie(req.body);
+        if (req.file) {
+           newMovie.photo = req.file.path
+        };
         const createdMovie = await newMovie.save();
         return res.status(201).json(createdMovie);
     } catch (error) {
@@ -98,6 +101,9 @@ const deleteMovie = async (req, res, next) => {
     try {
         const { id } = req.params;
         const deletedMovie = await Movie.findByIdAndDelete(id);
+        if(deletedMovie.photo){
+            deleteFile(deletedMovie.photo)
+        }
         return res.status(200).json(deletedMovie);
     } catch (error) {
         return next(error);

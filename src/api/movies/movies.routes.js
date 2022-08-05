@@ -9,7 +9,7 @@ router.get('/:id', getMovieById);
 router.get('/title/:title', getMovieByTitle);
 router.get('/genre/:genre', getMoviesByGenre);
 router.get('/year/:year', getMoviesByYear);
-router.post('/new', postMovie);
+router.post('/new', upload.single('photo'), postMovie);
 router.put('/edit/:id', upload.single('photo'), putMovie);
 router.delete('/delete/:id', deleteMovie);
 
